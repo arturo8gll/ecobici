@@ -22,3 +22,11 @@
     flex-direction: row;
     align-items: center;
 }
+
+.subraya-fem{
+    border-bottom: #FF3D67 5px solid;
+}
+
+.subraya-mas{
+    border-bottom: #059BFF 5px solid;
+}

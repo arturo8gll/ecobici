@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-default.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/odometer@0.4.8/themes/odometer-theme-default.css" />
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -70,16 +70,16 @@
             </div>
         </div>
         <div data-aos="fade-in" id="edad-chart" class="columns">
-            <div class="column is-6 is-offset-3">
+            <div class="column is-8 is-offset-2">
                 <canvas id="edad" width="100%"></canvas>
             </div>
         </div>
         <div class="columns">
             <div class="column is-6 has-text-centered">
-                <p class="is-size-1">Masculino</p>
+                <p class="is-size-1 subraya-mas">Masculino</p>
             </div>
             <div class="column is-6 has-text-centered">
-                <p class="is-size-1">Femenino</p>
+                <p class="is-size-1 subraya-fem">Femenino</p>
             </div>
         </div>
         <div class="columns">
@@ -348,7 +348,7 @@
         <br>
         <br>
     </div>
-    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="./assets/js/graphs.js"></script>
 <script>
@@ -368,7 +368,12 @@ var matrix = [
     [.04,  .13, .01],
     [ .15, .02, .10]
 ];
-var colors = [ "#FFCE56", "#059BFF", "#FF3D67"]
+var colors = [ 'rgba(54, 162, 235, .8)',
+                'rgba(255, 99, 132, .8)',
+                'rgba(255, 206, 86, .8)',]
+var colorsBar = [ 'rgba(54, 162, 235, 1)',
+'rgba(255, 99, 132, 1)',
+'rgba(255, 206, 86, 1)',]
 // give this matrix to d3.chord(): it will calculates all the info we need to draw arc and ribbon
 var res = d3.chord()
     .padAngle(0.05)
@@ -385,7 +390,7 @@ svg
   .enter()
   .append("g")
   .append("path")
-    .style("fill", function(d,i){ return colors[i] })
+    .style("fill", function(d,i){ return colorsBar[i] })
     .style("stroke", "gray")
     .attr("d", d3.arc()
       .innerRadius(255)
@@ -417,7 +422,7 @@ var group = svg
 // Add the ticks
 group
   .selectAll(".group-tick")
-  .data(function(d) { return groupTicks(d, .05); })    // Controls the number of ticks: one tick each 25 here.
+  .data(function(d) { return groupTicks(d, .02); })    // Controls the number of ticks: one tick each 25 here.
   .enter()
   .append("g")
     .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 265 + ",0)"; })
@@ -428,7 +433,7 @@ group
 // Add the labels of a few ticks:
 group
   .selectAll(".group-tick-label")
-  .data(function(d) { return groupTicks(d, .05); })
+  .data(function(d) { return groupTicks(d, .02); })
   .enter()
   .append("g")
     .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 270 + ",0)"; })
@@ -438,7 +443,7 @@ group
     .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
     .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
     .text(function(d) { return d.value.toFixed(2) })
-    .style("font-size", 10)
+    .style("font-size", 15)
 
 // Add the labels of a few ticks:
 var NameProvider=["Cuauhtémoc","Benito Juárez","Miguel Hidalgo"]

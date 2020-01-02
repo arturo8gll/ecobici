@@ -20,11 +20,7 @@ var config = {
     options: {
         responsive: true,
         legend: {
-            position: 'top',
-        },
-        title: {
-            display: true,
-            text: 'Uso por sexo'
+            display:false
         },
         animation: {
             animateScale: true,
@@ -46,7 +42,7 @@ var estConf = {
             label: 'Dataset 1'
         }],
         labels: [
-            'Cuauhtémoco',
+            'Cuauhtémoc',
             'Benito Juárez',
             'Miguel Hidalgo'
         ]
@@ -55,6 +51,9 @@ var estConf = {
         responsive: true,
         legend: {
             position: 'top',
+            labels:{
+                fontSize: 20
+            }
         },
         animation: {
             animateScale: true,
