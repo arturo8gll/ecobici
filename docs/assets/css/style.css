@@ -30,3 +30,17 @@
 .subraya-mas{
     border-bottom: #059BFF 5px solid;
 }
+.raya-fem{
+    border-left: #FF3D67 5px solid;
+}
+
+.raya-mas{
+    border-right: #059BFF 5px solid;
+}
+.raya-fem-c{
+    border-right: #FF3D67 5px solid;
+}
+
+.raya-mas-c{
+    border-left: #059BFF 5px solid;
+}

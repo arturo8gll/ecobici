@@ -1,480 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+    />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/odometer@0.4.8/themes/odometer-theme-default.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/odometer@0.4.8/themes/odometer-theme-default.css"
+    />
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <title>Ecobici</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="columns baseline margin-top-10">
-            <div class="column is-3">
-                <img width="100%" src="./assets/img/cdmx.png" alt="">
-            </div>
-            <div class="column is-3 is-offset-6 has-text-right	">
-                <img src="./assets/img/ecobici.png" alt="">
-            </div>
+      <div class="columns baseline margin-top-10">
+        <div class="column is-3">
+          <img width="100%" src="./assets/img/cdmx.png" alt="" />
         </div>
-        <div class="columns margin-top-10">
-            <div class="column is-3">
-                <img src="./assets/img/ecobici-letras.png" alt="">
-            </div>
-            <div class="column is-9 flex-center">
-                <p class="block is-size-1 margin-left-30">Agrupacion de Estaciones</p>
-            </div>
+        <div class="column is-3 is-offset-6 has-text-right	">
+          <img src="./assets/img/ecobici.png" alt="" />
         </div>
-        <div class="columns">
-            <div class="column">
-                <div class="content">
+      </div>
+      <div class="columns margin-top-10">
+        <div class="column is-3">
+          <img src="./assets/img/ecobici-letras.png" alt="" />
+        </div>
+        <div class="column is-9 flex-center">
+          <p class="block is-size-1 margin-left-30">Agrupacion de Estaciones</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="content">
+            <p class="is-size-3">¿Que es ECOBICI?</p>
+            <br />
+            <p>
+              ECOBICI es el sistema de bicicletas públicas de la Ciudad de
+              México que ha integrado a la bicicleta como parte esencial de la
+              movilidad, es un modo de transporte dirigido a los habitantes de
+              la capital, de sus alrededores y a los turistas. Permite a los
+              usuarios registrados tomar una bicicleta de cualquier
+              cicloestación y devolverla en la más cercana a su destino en
+              trayectos ilimitados de 45 minutos. Quienes quieran acceder al
+              Sistema ECOBICI, podrán pagar una suscripción por un año, una
+              semana, tres días o un día.
+            </p>
+            <br />
+            <p>
+              Para este análisis se tenía todos los registros del uso del
+              servicio desde el año 2017 al 2019 hasta el mes de octubre, los
+              cuales todos juntos fueron una cantidad de registros de
+              <b>17,104,573</b> los cuales tenían los siguientes datos por cada
+              registro
+            </p>
+            <br />
 
-                    <p class="is-size-3">¿Que es ECOBICI?</p>
-                    <br>
-                    <p>ECOBICI es el sistema de bicicletas públicas de la Ciudad de México que ha integrado a la bicicleta como parte esencial de la movilidad, es un modo de transporte dirigido a los habitantes de la capital, de sus alrededores y a los turistas.
-                        Permite a los usuarios registrados tomar una bicicleta de cualquier cicloestación y devolverla en la más cercana a su destino en trayectos ilimitados de 45 minutos. Quienes quieran acceder al Sistema ECOBICI, podrán pagar una suscripción por un año, una semana, tres días o un día.
-                    </p>
-                    <br>
-                    <p>
-                        Para este análisis se tenía todos los registros del uso del servicio desde el año 2017 al 2019 hasta el mes de octubre, los cuales todos juntos fueron una cantidad de registros de <b>17,104,573</b> los cuales tenían los siguientes datos por cada registro
-                    </p>
-                    <br>
-                    <p>
-                        <ol>
-                            <li>Bici: Identificación de la Bicicleta que fue prestada que fue prestada</li>
-                            <li>Ciclo Estacion Arribo: Estación donde fue dejada la Bicicleta</li>
-                            <li>Ciclo Estación Retiro: Estación de donde fue tomada la bicicleta</li>
-                            <li>Edad Usuario</li>
-                            <li>Fecha Arribo</li>
-                            <li>Fecha Retiro</li>
-                            <li>Genero Usuario: Masculino ó Femenino</li>
-                            <li>Hora Arribo : Hora exacta en la cual el usuario terminó el viaje</li>
-                            <li>Hora Retiro: Hora exacta en la cual el usuario empezó el viaje</li>
-                        </ol>
-    
-                    </p>
-                    <br>
-                    <p class="is-size-4">Lo que podemos ver de Ecobici referente al Género es que</h4>
-                </div>
-                
-            </div>
-        </div>
-        <div data-aos="fade-in" id="edad-chart" class="columns">
-            <div class="column is-8 is-offset-2">
-                <canvas id="edad" width="100%"></canvas>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-6 has-text-centered">
-                <p class="is-size-1 subraya-mas">Masculino</p>
-            </div>
-            <div class="column is-6 has-text-centered">
-                <p class="is-size-1 subraya-fem">Femenino</p>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <p class="is-size-2">Edad</p>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <div data-aos="fade" class="columns" id="edad">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-m" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-m" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-m" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-            <div class="column has-text-centered">
-                <div data-aos="fade" class="columns">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <p class="is-size-2">Velocidad</p>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <p class="is-size-2">Minutos Usados</p>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="columns">
-            <div class="column has-text-centered">
-                <p class="is-size-2">Distancia</p>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-            <div class="column is-6">
-                <div class="columns has-text-centered">
-                    <div class="column is-4">
-                        <p class="is-size-4">Minima</p>
-                        <br>
-                        <div  id="edad-min-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-4">
-                        <p class="is-size-4">Promedio</p>
-                        <br>
-                        <div  id="edad-mean-f" class="odometer is-size-2">123</div> 
-                    </div>
-                    <div class="column is-42">
-                        <p class="is-size-4">Maxima</p>
-                        <br>
-                        <div  id="edad-max-f" class="odometer is-size-2">123</div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="columns has-text-centered">
-            <div class="column">
-                <div class="content">
-                    <p class="is-size-5">Estos son datos que nos ayudan a comprender a cada sexo y de igual manera intentemos entender las diferentes estaciones de Ecobici</p>
-                </div>
-            </div>
-        </div>
-        <div data-aos="fade-in" id="est-chart" class="columns">
-            <div class="column is-7">
-                <canvas id="estaciones" width="100%"></canvas>
-            </div>
-            <div class="column flex-center">
-                <p class="is-size-5">Existen 480 Estaciones de Ecobici , las cuales el 60% está en la delegación Cuauhtémoc el 20% en Benito Juárez y 20% en Miguel Hidalgo</p>
-            </div>
-        </div>
-        <br>
-        <p class="is-size-4 has-text-centered">Las 5 estaciones con más arribos y retiros son</p>
-        <br>
-        <div class="columns">
-            <div class="column is-4 is-offset-2">
-                <div class="content">
-                    <p class="is-size-5">Arribos</p>
-                    <ol>
-                        <li>266</li>
-                        <li>27</li>
-                        <li>1</li>
-                        <li>271</li>
-                        <li>43</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="column is-4 is-offset-2">
-                <div class="content">
-                    <p class="is-size-5">Retiros</p>
-                    <ol>
-                        <li>271</li>
-                        <li>27</li>
-                        <li>1</li>
-                        <li>182</li>
-                        <li>18</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <div class="columns" data-aos="fade" id="delegaciones">
-            <div class="column has-text-centered">
+            <ol>
+              <li>
+                Bici: Identificación de la Bicicleta que fue prestada que fue
+                prestada
+              </li>
+              <li>
+                Ciclo Estacion Arribo: Estación donde fue dejada la Bicicleta
+              </li>
+              <li>
+                Ciclo Estación Retiro: Estación de donde fue tomada la bicicleta
+              </li>
+              <li>Edad Usuario</li>
+              <li>Fecha Arribo</li>
+              <li>Fecha Retiro</li>
+              <li>Genero Usuario: Masculino ó Femenino</li>
+              <li>
+                Hora Arribo : Hora exacta en la cual el usuario terminó el viaje
+              </li>
+              <li>
+                Hora Retiro: Hora exacta en la cual el usuario empezó el viaje
+              </li>
+            </ol>
 
-                <div id="chart"></div>
-            </div>
+            <br />
+            <p class="is-size-4">
+              Lo que podemos ver de Ecobici referente al Género es que
+            </p>
+          </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+      </div>
+      <div data-aos="fade-in" id="edad-chart" class="columns">
+        <div class="column is-8 is-offset-2">
+          <canvas id="edad" width="100%"></canvas>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-6 has-text-centered">
+          <p class="is-size-1 subraya-mas">Masculino</p>
+        </div>
+        <div class="column is-6 has-text-centered">
+          <p class="is-size-1 subraya-fem">Femenino</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column has-text-centered">
+          <p class="is-size-2">Edad</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column has-text-centered">
+          <div data-aos="fade" class="columns" id="edad">
+            <div class="column is-4">
+              <p class="is-size-4 raya-mas-c">Minima</p>
+              <br />
+              <div id="edad-min-m" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-m" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4 raya-mas">Maxima</p>
+              <br />
+              <div id="edad-max-m" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+        <div class="column has-text-centered">
+          <div data-aos="fade" class="columns">
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem-c">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="columns">
+        <div class="column has-text-centered">
+          <p class="is-size-2">Velocidad</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4 ">
+              <p class="is-size-4 raya-mas-c">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4 raya-mas">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem-c">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="columns">
+        <div class="column has-text-centered">
+          <p class="is-size-2">Minutos Usados</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4">
+              <p class="is-size-4 raya-mas-c">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-42">
+              <p class="is-size-4 raya-mas">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-42">
+              <p class="is-size-4 raya-fem-c">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="columns">
+        <div class="column has-text-centered">
+          <p class="is-size-2">Distancia</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4">
+              <p class="is-size-4 raya-mas-c">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-42">
+              <p class="is-size-4 raya-mas">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="columns has-text-centered">
+            <div class="column is-4">
+              <p class="is-size-4 raya-fem">Minima</p>
+              <br />
+              <div id="edad-min-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-4">
+              <p class="is-size-4">Promedio</p>
+              <br />
+              <div id="edad-mean-f" class="odometer is-size-2">123</div>
+            </div>
+            <div class="column is-42">
+              <p class="is-size-4 raya-fem-c">Maxima</p>
+              <br />
+              <div id="edad-max-f" class="odometer is-size-2">123</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="columns has-text-centered">
+        <div class="column">
+          <div class="content">
+            <p class="is-size-5">
+              Estos son datos que nos ayudan a comprender a cada sexo y de igual
+              manera intentemos entender las diferentes estaciones de Ecobici
+            </p>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-in" id="est-chart" class="columns">
+        <div class="column is-7">
+          <canvas id="estaciones" width="100%"></canvas>
+        </div>
+        <div class="column flex-center">
+          <p class="is-size-5">
+            Existen 480 Estaciones de Ecobici , las cuales el 60% está en la
+            delegación Cuauhtémoc el 20% en Benito Juárez y 20% en Miguel
+            Hidalgo
+          </p>
+        </div>
+      </div>
+      <br />
+      <p class="is-size-4 has-text-centered">
+        Las 5 estaciones con más arribos y retiros son
+      </p>
+      <br />
+      <div class="columns">
+        <div class="column is-4 is-offset-2">
+          <div class="content">
+            <p class="is-size-5">Arribos</p>
+            <ol>
+              <li>266</li>
+              <li>27</li>
+              <li>1</li>
+              <li>271</li>
+              <li>43</li>
+            </ol>
+          </div>
+        </div>
+        <div class="column is-4 is-offset-2">
+          <div class="content">
+            <p class="is-size-5">Retiros</p>
+            <ol>
+              <li>271</li>
+              <li>27</li>
+              <li>1</li>
+              <li>182</li>
+              <li>18</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="columns" data-aos="fade" id="delegaciones">
+        <div class="column has-text-centered">
+          <div id="chart"></div>
+        </div>
+      </div>
+      <p class="is-size-5">
+        Una variable la cual vamos a tomar en cuenta es el porcentaje de las
+        mujeres donde arriban y donde retiran
+      </p>
+      <br />
+      <div class="columns">
+        <div class="column is-4 is-offset-2">
+          <div class="content">
+            <p class="is-size-5">Arribos</p>
+            <ol>
+              <li>27</li>
+              <li>1</li>
+              <li>36</li>
+              <li>182</li>
+              <li>64</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="content">
+            <p>
+              Ahora para poder generar grupos las variables que voy a analizar
+              son las siguientes
+            </p>
+            <p>
+              varianza: es el promedio de que tanto se pueden alejar o acercar
+              del valor central los datos
+            </p>
+            <ul>
+              <li>varianza de la distancia de los viajes</li>
+              <li>varianza de los minutos usados en cada viaje</li>
+              <li>varianza de la velocidad por cada viaje</li>
+              <li>Varianza de la edad de los usuario de cada viaje</li>
+              <li>distancia promadio por cada viaje</li>
+              <li>Arribos en promedio al mes</li>
+              <li>porcentaje de mujeres que arriban a la estacion</li>
+              <li>Retiros en promedio al mes</li>
+              <li>Porcentaje de mujeres que retiran al mes en esa estación</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
     <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="./assets/js/graphs.js"></script>
-<script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./assets/js/graphs.js"></script>
+    <script>
+      // create the svg area
+      var svg = d3
+        .select("#chart")
+        .append("svg")
+        .attr("width", 800)
+        .attr("height", 800)
+        .append("g")
+        .attr("transform", "translate(400,400)")
 
+      // create a matrix
+      var matrix = [
+        [0.44, 0.04, 0.04],
+        [0.04, 0.13, 0.01],
+        [0.15, 0.02, 0.1]
+      ]
+      var colors = [
+        "rgba(54, 162, 235, .8)",
+        "rgba(255, 99, 132, .8)",
+        "rgba(255, 206, 86, .8)"
+      ]
+      var colorsBar = [
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 99, 132, 1)",
+        "rgba(255, 206, 86, 1)"
+      ]
+      // give this matrix to d3.chord(): it will calculates all the info we need to draw arc and ribbon
+      var res = d3
+        .chord()
+        .padAngle(0.05)
+        .sortSubgroups(d3.descending)(matrix)
 
-// create the svg area
-var svg = d3.select("#chart")
-  .append("svg")
-    .attr("width", 800)
-    .attr("height", 800)
-  .append("g")
-    .attr("transform", "translate(400,400)")
+      // Add the links between groups
+      // add the groups on the outer part of the circle
+      svg
+        .datum(res)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) {
+          return d.groups
+        })
+        .enter()
+        .append("g")
+        .append("path")
+        .style("fill", function(d, i) {
+          return colorsBar[i]
+        })
+        .style("stroke", "gray")
+        .attr(
+          "d",
+          d3
+            .arc()
+            .innerRadius(255)
+            .outerRadius(265)
+        )
+      // Add the links between groups
+      svg
+        .datum(res)
+        .append("g")
+        .selectAll("path")
+        .data(function(d) {
+          return d
+        })
+        .enter()
+        .append("path")
+        .attr("d", d3.ribbon().radius(250))
+        .style("fill", function(d) {
+          return colors[d.source.index]
+        }) // colors depend on the source group. Change to target otherwise.
+        .style("stroke", "gray")
+      // this group object use each group of the data.groups object
+      var group = svg
+        .datum(res)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) {
+          return d.groups
+        })
+        .enter()
 
-// create a matrix
-var matrix = [
-    [ .44, .04, .04],
-    [.04,  .13, .01],
-    [ .15, .02, .10]
-];
-var colors = [ 'rgba(54, 162, 235, .8)',
-                'rgba(255, 99, 132, .8)',
-                'rgba(255, 206, 86, .8)',]
-var colorsBar = [ 'rgba(54, 162, 235, 1)',
-'rgba(255, 99, 132, 1)',
-'rgba(255, 206, 86, 1)',]
-// give this matrix to d3.chord(): it will calculates all the info we need to draw arc and ribbon
-var res = d3.chord()
-    .padAngle(0.05)
-    .sortSubgroups(d3.descending)
-    (matrix)
+      // Add the ticks
+      group
+        .selectAll(".group-tick")
+        .data(function(d) {
+          return groupTicks(d, 0.02)
+        }) // Controls the number of ticks: one tick each 25 here.
+        .enter()
+        .append("g")
+        .attr("transform", function(d) {
+          return (
+            "rotate(" +
+            ((d.angle * 180) / Math.PI - 90) +
+            ") translate(" +
+            265 +
+            ",0)"
+          )
+        })
+        .append("line") // By default, x1 = y1 = y2 = 0, so no need to specify it.
+        .attr("x2", 6)
+        .attr("stroke", "gray")
 
-// Add the links between groups
-// add the groups on the outer part of the circle
-svg
-  .datum(res)
-  .append("g")
-  .selectAll("g")
-  .data(function(d) { return d.groups; })
-  .enter()
-  .append("g")
-  .append("path")
-    .style("fill", function(d,i){ return colorsBar[i] })
-    .style("stroke", "gray")
-    .attr("d", d3.arc()
-      .innerRadius(255)
-      .outerRadius(265)
-    )
-    // Add the links between groups
-svg
-  .datum(res)
-  .append("g")
-  .selectAll("path")
-  .data(function(d) { return d; })
-  .enter()
-  .append("path")
-    .attr("d", d3.ribbon()
-      .radius(250)
-    )
-    .style("fill", function(d){ return(colors[d.source.index]) }) // colors depend on the source group. Change to target otherwise.
-    .style("stroke", "gray");
-// this group object use each group of the data.groups object
-var group = svg
-  .datum(res)
-  .append("g")
-  .selectAll("g")
-  .data(function(d) { return d.groups; })
-  .enter()
+      // Add the labels of a few ticks:
+      group
+        .selectAll(".group-tick-label")
+        .data(function(d) {
+          return groupTicks(d, 0.02)
+        })
+        .enter()
+        .append("g")
+        .attr("transform", function(d) {
+          return (
+            "rotate(" +
+            ((d.angle * 180) / Math.PI - 90) +
+            ") translate(" +
+            270 +
+            ",0)"
+          )
+        })
+        .append("text")
+        .attr("x", 8)
+        .attr("dy", ".35em")
+        .attr("transform", function(d) {
+          return d.angle > Math.PI ? "rotate(180) translate(-16)" : null
+        })
+        .style("text-anchor", function(d) {
+          return d.angle > Math.PI ? "end" : null
+        })
+        .text(function(d) {
+          return d.value.toFixed(2)
+        })
+        .style("font-size", 15)
 
+      // Add the labels of a few ticks:
+      var NameProvider = ["Cuauhtémoc", "Benito Juárez", "Miguel Hidalgo"]
+      group
+        .append("svg:text")
+        .each(function(d) {
+          d.angle = (d.startAngle + d.endAngle) / 2
+        })
+        .attr("dy", ".35em")
+        .attr("class", "titles")
+        .attr("text-anchor", function(d) {
+          return d.angle > Math.PI ? "end" : null
+        })
+        .attr("transform", function(d) {
+          return (
+            "rotate(" +
+            ((d.angle * 180) / Math.PI - 90) +
+            ")" +
+            "translate(" +
+            (255 + 55) +
+            ")" +
+            (d.angle > Math.PI ? "rotate(180)" : "")
+          )
+        })
+        .text(function(d, i) {
+          console.log(i)
 
+          return NameProvider[i]
+        })
 
-// Add the ticks
-group
-  .selectAll(".group-tick")
-  .data(function(d) { return groupTicks(d, .02); })    // Controls the number of ticks: one tick each 25 here.
-  .enter()
-  .append("g")
-    .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 265 + ",0)"; })
-  .append("line")               // By default, x1 = y1 = y2 = 0, so no need to specify it.
-    .attr("x2", 6)
-    .attr("stroke", "gray")
-
-// Add the labels of a few ticks:
-group
-  .selectAll(".group-tick-label")
-  .data(function(d) { return groupTicks(d, .02); })
-  .enter()
-  .append("g")
-    .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 270 + ",0)"; })
-  .append("text")
-    .attr("x", 8)
-    .attr("dy", ".35em")
-    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
-    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-    .text(function(d) { return d.value.toFixed(2) })
-    .style("font-size", 15)
-
-// Add the labels of a few ticks:
-var NameProvider=["Cuauhtémoc","Benito Juárez","Miguel Hidalgo"]
-group
-    .append("svg:text")
-  .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
-  .attr("dy", ".35em")
-  .attr("class", "titles")
-  .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-  .attr("transform", function(d) {
-		return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-		+ "translate(" + (255 + 55) + ")"
-		+ (d.angle > Math.PI ? "rotate(180)" : "");
-  })
-  .text(function(d,i) { 
-      console.log(i);
-      
-      return NameProvider[i]; 
-    });  
-
-
-// Returns an array of tick angles and values for a given group and step.
-function groupTicks(d, step) {
-  var k = (d.endAngle - d.startAngle) / d.value;
-  return d3.range(0, d.value, step).map(function(value) {
-    return {value: value, angle: value * k + d.startAngle};
-  });
-}
-
-</script>
-<!-- 
+      // Returns an array of tick angles and values for a given group and step.
+      function groupTicks(d, step) {
+        var k = (d.endAngle - d.startAngle) / d.value
+        return d3.range(0, d.value, step).map(function(value) {
+          return { value: value, angle: value * k + d.startAngle }
+        })
+      }
+    </script>
+    <!-- 
 <script>
      var chord = d3.layout.chord()
    .padding(.05)
@@ -549,7 +681,7 @@ svg.append("svg:g")
   .enter().append("svg:path")
     .style("fill", function(d) { return fill(d.target.index); })
     .attr("d", d3.svg.chord().radius(r0))
-    .style("opacity", 1);
+    .style("opacity", 1)
 
 /** Returns an array of tick angles and labels, given a group. */
 function groupTicks(d) {
@@ -575,5 +707,5 @@ function fade(opacity) {
 }
 
 </script> -->
-</body>
+  </body>
 </html>
