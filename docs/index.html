@@ -97,7 +97,7 @@
             </ol>
 
             <br />
-            <p class="is-size-4">
+            <p class="is-size-5">
               Lo que podemos ver de Ecobici referente al Género es que
             </p>
           </div>
@@ -108,7 +108,7 @@
           <canvas id="edad" width="100%"></canvas>
         </div>
         <div class="column flex-center">
-          <p class="is-size-4">
+          <p class="is-size-5">
             El <u>75%</u> de los Usuarios son Hombres entre 16 y 65 años , su
             edad promedio es 35 años , por su parte las Mujeres representan un
             <u>25%</u> de las cuales estan entre 16 y 65 años y su edad promedio
@@ -118,17 +118,17 @@
       </div>
       <div class="columns">
         <div class="column is-6 has-text-centered">
-          <p class="is-size-1 subraya-mas">Masculino</p>
+          <p class="is-size-2 subraya-mas">Masculino</p>
         </div>
         <div class="column is-6 has-text-centered">
-          <p class="is-size-1 subraya-fem">Femenino</p>
+          <p class="is-size-2 subraya-fem">Femenino</p>
         </div>
       </div>
       <br />
       <br />
       <div class="columns" data-aos="fade">
         <div class="column has-text-centered">
-          <p class="is-size-2">Velocidad</p>
+          <p class="is-size-3">Velocidad</p>
         </div>
       </div>
       <div class="columns" data-aos="fade" id="velocidad">
@@ -177,7 +177,7 @@
       <br />
       <div class="columns" data-aos="fade">
         <div class="column has-text-centered">
-          <p class="is-size-2">Minutos Usados</p>
+          <p class="is-size-3">Minutos Usados</p>
         </div>
       </div>
       <div class="columns" data-aos="fade" id="minutos">
@@ -223,11 +223,9 @@
       <br />
       <br />
       <br />
-      <br />
-      <br />
       <div class="columns" data-aos="fade">
         <div class="column has-text-centered">
-          <p class="is-size-2">Distancia</p>
+          <p class="is-size-3">Distancia</p>
         </div>
       </div>
       <div class="columns" data-aos="fade" id="distancia">
@@ -293,10 +291,15 @@
           </p>
         </div>
       </div>
-      <p class="has-text-centered">
+			<br>
+			
+      <p class="has-text-centered is-size-4">
         Como se puede ver las mayores horas de ocupación de del servicio son a
         las 7 a.m y a las 6 p.m tanto de los retiros como los arribos
       </p>
+			<br>
+			<br>
+			
       <div class="columns">
         <div class="column is-10 is-offset-1">
           <canvas id="horas" width="100%"></canvas>
@@ -304,7 +307,7 @@
       </div>
       <br />
       <p class="is-size-4 has-text-centered">
-        Las 5 estaciones con más arribos y retiros son
+        Las 5 estaciones con más arribos y retiros son:
       </p>
       <br />
       <div class="columns">
@@ -333,8 +336,12 @@
           </div>
         </div>
       </div>
+			<br>
+			<br>
+			
+			<p class="has-text-centered is-size-4">Interacción de los viajes entre delegaciones</p>
       <div class="columns">
-        <div class="column">
+        <div class="column has-text-centered">
           <svg
             id="sankey_svg"
             height="600"
@@ -351,7 +358,7 @@
                   <path
                     class="link"
                     d="M10,121.5C454.8,121.5 121.19999999999997,121.50000000000001 566,121.50000000000001"
-                    style="fill: none; stroke-width: 243; stroke: rgb(31, 119, 180); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 243; stroke: #36A2EB; stroke-opacity: 0.4;"
                   >
                     <title>
                       Cuauhtémoc Retiro &#8594; Cuauhtémoc Arribo: 0.45
@@ -360,7 +367,7 @@
                   <path
                     class="link"
                     d="M10,344.7C454.8,344.7 121.19999999999997,283.5 566,283.5"
-                    style="fill: none; stroke-width: 81; stroke: rgb(174, 199, 232); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 81; stroke: #FFCE56; stroke-opacity: 0.4;"
                   >
                     <title>
                       Miguel Hidalgo Retiro &#8594; Cuauhtémoc Arribo: 0.15
@@ -369,7 +376,7 @@
                   <path
                     class="link"
                     d="M10,540.9C454.8,540.9 121.19999999999997,540.9 566,540.9"
-                    style="fill: none; stroke-width: 70.2; stroke: rgb(255, 127, 14); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 70.2; stroke: #FF6384; stroke-opacity: 0.4;"
                   >
                     <title>
                       Benito Juárez Retiro &#8594; Benito Juárez Arribo: 0.13
@@ -378,7 +385,7 @@
                   <path
                     class="link"
                     d="M10,412.2C454.8,412.2 121.19999999999997,412.20000000000005 566,412.20000000000005"
-                    style="fill: none; stroke-width: 54; stroke: rgb(174, 199, 232); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 54; stroke: #FFCE56; stroke-opacity: 0.4;"
                   >
                     <title>
                       Miguel Hidalgo Retiro &#8594; Miguel Hidalgo Arribo: 0.10
@@ -387,7 +394,7 @@
                   <path
                     class="link"
                     d="M10,253.8C454.8,253.8 121.19999999999997,374.40000000000003 566,374.40000000000003"
-                    style="fill: none; stroke-width: 21.6; stroke: rgb(31, 119, 180); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 21.6; stroke: #059BFF; stroke-opacity: 0.4;"
                   >
                     <title>
                       Cuauhtémoc Retiro &#8594; Miguel Hidalgo Arribo: 0.04
@@ -396,7 +403,7 @@
                   <path
                     class="link"
                     d="M10,275.40000000000003C454.8,275.40000000000003 121.19999999999997,478.8 566,478.8"
-                    style="fill: none; stroke-width: 21.6; stroke: rgb(31, 119, 180); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 21.6; stroke: #059BFF; stroke-opacity: 0.4;"
                   >
                     <title>
                       Cuauhtémoc Retiro &#8594; Benito Juárez Arribo: 0.04
@@ -405,7 +412,7 @@
                   <path
                     class="link"
                     d="M10,484.2C454.8,484.2 121.19999999999997,334.8 566,334.8"
-                    style="fill: none; stroke-width: 21.6; stroke: rgb(255, 127, 14); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 21.6; stroke: #FF6384; stroke-opacity: 0.4;"
                   >
                     <title>
                       Benito Juárez Retiro &#8594; Cuauhtémoc Arribo: 0.04
@@ -414,7 +421,7 @@
                   <path
                     class="link"
                     d="M10,447.3C454.8,447.3 121.19999999999997,497.70000000000005 566,497.70000000000005"
-                    style="fill: none; stroke-width: 16.2; stroke: rgb(174, 199, 232); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 16.2; stroke: #FFCE56; stroke-opacity: 0.4;"
                   >
                     <title>
                       Miguel Hidalgo Retiro &#8594; Benito Juárez Arribo: 0.03
@@ -423,7 +430,7 @@
                   <path
                     class="link"
                     d="M10,500.4C454.8,500.4 121.19999999999997,444.6 566,444.6"
-                    style="fill: none; stroke-width: 10.8; stroke: rgb(255, 127, 14); stroke-opacity: 0.4;"
+                    style="fill: none; stroke-width: 10.8; stroke: #FF6384; stroke-opacity: 0.4;"
                   >
                     <title>
                       Benito Juárez Retiro &#8594; Miguel Hidalgo Arribo: 0.02
@@ -437,7 +444,7 @@
                       width="10"
                       id="r0"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(31, 119, 180); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(15, 58, 88);"
+                      style="fill: #059BFF; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(15, 58, 88);"
                     >
                       <title>Cuauhtémoc Retiro: 0.53</title>
                     </rect>
@@ -457,7 +464,7 @@
                       width="10"
                       id="r1"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(174, 199, 232); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(85, 97, 113);"
+                      style="fill: #FFC533; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(85, 97, 113);"
                     >
                       <title>Miguel Hidalgo Arribo: 0.16</title>
                     </rect>
@@ -477,7 +484,7 @@
                       width="10"
                       id="r2"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(255, 127, 14); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(124, 62, 6);"
+                      style="fill: #FF3D67; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(124, 62, 6);"
                     >
                       <title>Benito Juárez Arribo: 0.20</title>
                     </rect>
@@ -500,7 +507,7 @@
                       width="10"
                       id="r3"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(31, 119, 180); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(15, 58, 88);"
+                      style="fill: #059BFF; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(15, 58, 88);"
                     >
                       <title>Cuauhtémoc Arribo: 0.64</title>
                     </rect>
@@ -520,7 +527,7 @@
                       width="10"
                       id="r4"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(255, 127, 14); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(124, 62, 6);"
+                      style="fill: #FF3D67; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(124, 62, 6);"
                     >
                       <title>Benito Juárez Retiro: 0.19</title>
                     </rect>
@@ -540,7 +547,7 @@
                       width="10"
                       id="r5"
                       shape-rendering="crispEdges"
-                      style="fill: rgb(174, 199, 232); fill-opacity: 0.9; stroke-width: 0; stroke: rgb(85, 97, 113);"
+                      style="fill: #FFC533; fill-opacity: 0.9; stroke-width: 0; stroke: rgb(85, 97, 113);"
                     >
                       <title>Miguel Hidalgo Retiro: 0.28</title>
                     </rect>
@@ -560,11 +567,11 @@
           </svg>
         </div>
       </div>
-      <div class="columns" data-aos="fade" id="delegaciones">
-        <div class="column has-text-centered">
-          <div id="chart"></div>
-        </div>
-      </div>
+      <!-- <div class="columns" data-aos="fade" id="delegaciones"> -->
+        <!-- <div class="column has-text-centered"> -->
+          <!-- <div id="chart"></div> -->
+        <!-- </div> -->
+      <!-- </div> -->
       <p class="is-size-5">
         Una variable la cual vamos a tomar en cuenta es el porcentaje de las
         mujeres donde arriban y donde retiran , lo que se observo es que son las
@@ -574,7 +581,7 @@
       <div class="columns">
         <div class="column is-4 is-offset-2">
           <div class="content">
-            <p class="is-size-5">Estaciones</p>
+            <p class="">Estaciones</p>
             <ol>
               <li>27 REFORMA-HAVRE</li>
               <li>1 RIO SENA-RIO BALSAS</li>
@@ -588,11 +595,11 @@
       <div class="columns">
         <div class="column">
           <div class="content">
-            <p>
+            <p class="is-size-5">
               Las variables que tomaremos en cuenta para poder generar grupos
               son las siguientes.
             </p>
-            <p>
+            <p class="is-size-5">
               Varianza: es el promedio de que tanto se pueden alejar o acercar
               del valor central los datos
             </p>
@@ -610,36 +617,21 @@
           </div>
         </div>
       </div>
-      <div class="columns">
+			<br>
+			
+			<p class="is-size-5">El resultado de este proceso dio como resultado 7 grupos</p>
+      <br>
+      
+			<div class="columns" data-aos="fade">
         <div class="column">
           <canvas id="tsne" width="100%"></canvas>
         </div>
       </div>
-      <div class="columns">
+      <div class="columns" data-aos="fade">
         <div class="column">
           <canvas id="md" width="100%"></canvas>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
     <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
